@@ -3,7 +3,7 @@
 
 ### macOS ###
 # General
-**/.DS_Store
+.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -36,9 +36,8 @@ Temporary Items
 
 # End of https://www.toptal.com/developers/gitignore/api/macos
 
-*.vscode
-.fleet
-.idea
 *
 !*.*
 !*/
+.DS_Store
+.vscode/settings.json
