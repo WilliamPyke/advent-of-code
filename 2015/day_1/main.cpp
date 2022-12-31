@@ -27,4 +27,5 @@ int main() {
     std::string filepath = "/Users/williampyke/Documents/Code/AOC/advent-of-code/2015/day_1/input.txt";
     std::vector<char> charFile = utils.readCharFile(filepath);
     std::cout << calc.calcFloor(charFile) << std::endl;
+    return 0;
 }
