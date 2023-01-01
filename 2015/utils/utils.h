@@ -64,15 +64,17 @@ public:
 
     int second_smallest(std::vector<int>& values){  //function that checks for and returns the second smallest value in an integer vector
         int smallest = values[0];
+        int smallest_pos = 0;
         int second_smallest = INT_MAX;
         int same_values;
         for (int i = 1; i < values.size(); i++) { //checks for smallest value
             if (values[i] < smallest) {
                 smallest = values[i];
+                smallest_pos = i;
             }
         }
         for (int i = 0; i < values.size(); i++) {
-            if (values[i] > smallest && values[i] < second_smallest) { //checks over for second smallest value
+            if (values[i] >= smallest && values[i] <= second_smallest && smallest_pos != i) { //checks over for second smallest value
                 second_smallest = values[i];
             }
         }

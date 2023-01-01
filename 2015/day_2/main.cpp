@@ -68,9 +68,10 @@ public:
         int smallest = utils.smallest(lengths); //utils function to find the smallest of the values stored in the vector
         int second_smallest = utils.second_smallest(lengths);   //utils function to find the second smallest of the values stored in the vector
         len = 2 * smallest + 2 * second_smallest + l * w * h;   //length calculation
-        std::cout << l << " " << w << " " << h << std::endl;    //prints values for debugging purposes
-        std::cout << second_smallest << " " << smallest << std::endl;
-        std::cout << len << std::endl;
+
+        //std::cout << l << " " << w << " " << h << std::endl;    //prints values for debugging purposes
+        //std::cout << second_smallest << " " << smallest << std::endl;
+        //std::cout << len << std::endl;
 
         return len;
     }
