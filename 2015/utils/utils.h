@@ -7,7 +7,7 @@
 
 class Utils {
 public:
-    std::vector<char> readCharFile(std::string& filePath) {
+    std::vector<char> readCharFile(std::string& filePath) { //function that reads a file and returns a char vector that contains all the characters within
 
         std::vector<char> charFile;
         std::ifstream in(filePath);
@@ -30,9 +30,7 @@ public:
         return charFile;
     };
 
-
-    std::vector<std::string> readLineFile(std::string& filePath) //function to read and store data from text file
-    {
+    std::vector<std::string> readLineFile(std::string& filePath) {  //function that reads a file and returns a string vector that contains all the lines within
         std::vector<std::string> lineFile;
         std::ifstream filein; //input filestream operator
         filein.open(filePath);
@@ -53,6 +51,41 @@ public:
         }
         return lineFile;
     };
+
+    int smallest(std::vector<int>& values){ //function that checks for and returns the smallest value in an integer vector
+        int smallest = values[0];
+        for (int i = 1; i < values.size(); i++) {
+            if (values[i] < smallest) {
+                smallest = values[i];
+            }
+        }
+        return smallest;
+    }
+
+    int second_smallest(std::vector<int>& values){  //function that checks for and returns the second smallest value in an integer vector
+        int smallest = values[0];
+        int second_smallest = INT_MAX;
+        int same_values;
+        for (int i = 1; i < values.size(); i++) { //checks for smallest value
+            if (values[i] < smallest) {
+                smallest = values[i];
+            }
+        }
+        for (int i = 0; i < values.size(); i++) {
+            if (values[i] > smallest && values[i] < second_smallest) { //checks over for second smallest value
+                second_smallest = values[i];
+            }
+        }
+        for (int i = 0; i < values.size(); i++) {   //checks for any duplicate values, since if there is a case such as 24 24 24
+            if (values[i] == smallest) {            //since second_smallest is initialized to INT_MAX, it would not change to 24
+                same_values++;                      
+            }
+        }
+        if (same_values == values.size()) { //if all the values are the same, make second_smallest a value in the vector
+            second_smallest = values[0];    //such that it does not remain as INT_MAX.
+        }
+        return second_smallest;
+    }
 };
 
 #endif
