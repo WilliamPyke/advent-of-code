@@ -49,25 +49,20 @@ public:
         int lw = l * w;
         int wh = w * h;
         int hl = h * l;
-        std::vector<int> areas; //stores lw, wh and hl in vector
-        areas.push_back(lw);
-        areas.push_back(wh);
-        areas.push_back(hl);
-        int smallest = utils.smallest(areas);       //utils function to find the smallest of the values stored in the vector
-        area = 2 * lw + 2 * wh + 2 * hl + smallest; //area calculation
+        int arr[] = {lw, wh, hl};
+        std::vector<int> areas(arr, arr+(sizeof(arr) / sizeof(arr[0]))); //stores lw, wh and hl in vector
+        areas = utils.sortIntVector(areas);         //utils function to sort the values in the vector
+        area = 2 * lw + 2 * wh + 2 * hl + areas[0]; //area calculation
         return area;
     }
 
     int calcRibbon(int l, int w, int h) {
         Utils utils;
         int len = 0;
-        std::vector<int> lengths; //stores l, w and h in vector
-        lengths.push_back(l);
-        lengths.push_back(w);
-        lengths.push_back(h);
-        int smallest = utils.smallest(lengths); //utils function to find the smallest of the values stored in the vector
-        int second_smallest = utils.second_smallest(lengths);   //utils function to find the second smallest of the values stored in the vector
-        len = 2 * smallest + 2 * second_smallest + l * w * h;   //length calculation
+        int arr[] = {l, w, h};
+        std::vector<int> lengths(arr, arr+(sizeof(arr) / sizeof(arr[0])));
+        lengths = utils.sortIntVector(lengths); //utils function to sort the values in the vector
+        len = 2 * lengths[0] + 2 * lengths[1] + l * w * h;   //length calculation
 
         //std::cout << l << " " << w << " " << h << std::endl;    //prints values for debugging purposes
         //std::cout << second_smallest << " " << smallest << std::endl;

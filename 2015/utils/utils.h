@@ -2,13 +2,13 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 #ifndef UTILS_H
 #define UTILS_H
 
 class Utils {
 public:
     std::vector<char> readCharFile(std::string& filePath) { //function that reads a file and returns a char vector that contains all the characters within
-
         std::vector<char> charFile;
         std::ifstream in(filePath);
         char c;
@@ -28,7 +28,7 @@ public:
 
         in.close();
         return charFile;
-    };
+    }
 
     std::vector<std::string> readLineFile(std::string& filePath) {  //function that reads a file and returns a string vector that contains all the lines within
         std::vector<std::string> lineFile;
@@ -50,7 +50,14 @@ public:
             filein.close(); //closes the input file
         }
         return lineFile;
-    };
+    }
+
+    std::vector<int> sortIntVector(std::vector<int>& values) {
+        std::sort (values.begin(), values.end());
+        return values;
+    }
+
+/*  OLD WAY OF FINDING THE SMALLEST AND SECOND SMALLEST VALUES (I CAN JUST SORT THE VECTOR! see sortIntVector function)
 
     int smallest(std::vector<int>& values){ //function that checks for and returns the smallest value in an integer vector
         int smallest = values[0];
@@ -64,17 +71,15 @@ public:
 
     int second_smallest(std::vector<int>& values){  //function that checks for and returns the second smallest value in an integer vector
         int smallest = values[0];
-        int smallest_pos = 0;
         int second_smallest = INT_MAX;
         int same_values;
         for (int i = 1; i < values.size(); i++) { //checks for smallest value
             if (values[i] < smallest) {
                 smallest = values[i];
-                smallest_pos = i;
             }
         }
         for (int i = 0; i < values.size(); i++) {
-            if (values[i] >= smallest && values[i] <= second_smallest && smallest_pos != i) { //checks over for second smallest value
+            if (values[i] > smallest && values[i] < second_smallest) { //checks over for second smallest value
                 second_smallest = values[i];
             }
         }
@@ -83,11 +88,13 @@ public:
                 same_values++;                      
             }
         }
-        if (same_values == values.size()) { //if all the values are the same, make second_smallest a value in the vector
-            second_smallest = values[0];    //such that it does not remain as INT_MAX.
+        if (same_values >= 2) {             //if more than two values are the same, make second_smallest equal to smallest
+            second_smallest = smallest;
         }
         return second_smallest;
     }
+*/
+
 };
 
 #endif
